@@ -7,6 +7,7 @@ uses
   Vcl.Forms,
   UFrmPrincipal in '..\pas\ui\UFrmPrincipal.pas' {Form1},
   UEfetuarPedidoDTOImpl in '..\..\shared\pas\dto\UEfetuarPedidoDTOImpl.pas',
+  UConsultarPedidoDTOImpl in '..\..\shared\pas\dto\UConsultarPedidoDTOImpl.pas',
   UPizzaSaborEnum in '..\..\shared\pas\enum\UPizzaSaborEnum.pas',
   UPizzaTamanhoEnum in '..\..\shared\pas\enum\UPizzaTamanhoEnum.pas';
 

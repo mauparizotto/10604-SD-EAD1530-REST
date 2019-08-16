@@ -11,6 +11,9 @@ type
 
     procedure efetuarPedido(const APizzaTamanho: TPizzaTamanhoEnum; const APizzaSabor: TPizzaSaborEnum; const AValorPedido: Currency;
       const ATempoPreparo: Integer; const ACodigoCliente: Integer);
+
+    procedure ConsultaPedidoP(out APizzaTamanho: TPizzaTamanhoEnum; out APizzaSabor: TPizzaSaborEnum; out AValorPedido: Currency;
+      out ATempoPreparo: Integer; const ACodigoCliente: Integer);
   end;
 
 implementation

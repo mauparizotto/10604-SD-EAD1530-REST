@@ -13,6 +13,7 @@ type
 
   [MVCDoc('Pizzaria backend')]
   [MVCPath('/')]
+
   TPizzariaBackendController = class(TMVCController)
   public
 
@@ -20,6 +21,7 @@ type
     [MVCPath('/efetuarPedido')]
     [MVCHTTPMethod([httpPOST])]
     procedure efetuarPedido(const AContext: TWebContext);
+    procedure ConsultarPedidoP(const AContext: TWebContext);
   end;
 
 implementation
@@ -29,7 +31,7 @@ uses
   Rest.json,
   MVCFramework.SystemJSONUtils,
   UPedidoServiceIntf,
-  UPedidoServiceImpl, UPedidoRetornoDTOImpl;
+  UPedidoServiceImpl, UPedidoRetornoDTOImpl, UConsultarPedidoDTOImpl;
 
 { TApp1MainController }
 
@@ -52,5 +54,27 @@ begin
   end;
   Log.Info('==>Executou o método ', 'efetuarPedido');
 end;
+
+
+procedure TPizzariaBackendController.ConsultarPedidoP(const AContext: TWebContext);
+var
+  oConsultarPedidoDTO: TConsultarPedidoDTO;
+  oPedidoRetornoDTO: TPedidoRetornoDTO;
+begin
+  oConsultarPedidoDTO := AContext.Request.BodyAs<TConsultarPedidoDTO>;
+  try
+    with TPedidoService.Create do
+    try
+      oPedidoRetornoDTO := ConsultaPedido(oConsultarPedidoDTO.DocumentoCliente);
+      Render(TJson.ObjectToJsonString(oPedidoRetornoDTO));
+    finally
+      oPedidoRetornoDTO.Free
+    end;
+  finally
+    oConsultarPedidoDTO.Free;
+  end;
+  Log.Info('==>Executou o método ', 'ConsultarPedido');
+end;
+
 
 end.

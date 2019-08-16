@@ -37,7 +37,8 @@ uses
   UClienteRepositoryIntf in '..\pas\repository\UClienteRepositoryIntf.pas',
   System.Classes,
   System.Types,
-  UEfetuarPedidoDTOImpl in '..\..\shared\pas\dto\UEfetuarPedidoDTOImpl.pas';
+  UEfetuarPedidoDTOImpl in '..\..\shared\pas\dto\UEfetuarPedidoDTOImpl.pas',
+  UConsultarPedidoDTOImpl in '..\..\shared\pas\dto\UConsultarPedidoDTOImpl.pas';
 
 {$R *.res}
 
